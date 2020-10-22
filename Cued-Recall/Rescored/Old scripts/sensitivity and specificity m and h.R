@@ -1,75 +1,47 @@
 ####setup####
-dat = read.csv("max_huff processed.csv")
+dat = read.csv("Maxwell Huff Scored.csv")
 
 library(caret)
 
+summary(dat)
+
 ####sensitivity analysis####
 #set up
-data100 = factor(dat$one_hundred)
-data95 = factor(dat$ninety_five)
-data90 = factor(dat$ninety)
-data85 = factor(dat$eightyfive)
-data80 = factor(dat$eighty)
-data75 = factor(dat$seventy_five)
-data70 = factor(dat$seventy)
-data65 = factor(dat$sixty_five)
-data60 = factor(dat$sixty)
-data55 = factor(dat$fifty_five)
-data50 = factor(dat$fifty)
+lev0 = factor(dat$lev0)
+lev1 = factor(dat$lev1)
+lev2 = factor(dat$lev2)
+lev3 = factor(dat$lev3)
+lev4 = factor(dat$lev4)
+lev5 = factor(dat$lev5)
 
-ref = factor(dat$manually_coded)
+ref = factor(dat$Manual_Scored)
 
-#start with 100
-table(data100, ref)
-sensitivity(data100, ref)
-specificity(data100, ref)
+#start with 0
+table(lev0, ref)
+sensitivity(lev0, ref)
+specificity(lev0, ref)
 
-#95
-table(data95, ref)
-sensitivity(data95, ref)
-specificity(data95, ref)
+#1
+table(lev1, ref)
+sensitivity(lev1, ref)
+specificity(lev1, ref)
 
-#90
-table(data90, ref)
-sensitivity(data90, ref)
-specificity(data90, ref)
+#2
+table(lev2, ref)
+sensitivity(lev2, ref)
+specificity(lev2, ref)
 
-#85
-table(data85, ref)
-sensitivity(data85, ref)
-specificity(data85, ref)
+#3
+table(lev3, ref)
+sensitivity(lev3, ref)
+specificity(lev3, ref)
 
-#80
-table(data80, ref)
-sensitivity(data80, ref)
-specificity(data80, ref)
+#4
+table(lev4, ref)
+sensitivity(lev4, ref)
+specificity(lev4, ref)
 
-#75
-table(data75, ref)
-sensitivity(data75, ref)
-specificity(data75, ref)
-
-#70
-table(data70, ref)
-sensitivity(data70, ref)
-specificity(data70, ref)
-
-#65
-table(data65, ref)
-sensitivity(data65, ref)
-specificity(data65, ref)
-
-#60
-table(data60, ref)
-sensitivity(data60, ref)
-specificity(data60, ref)
-
-#55
-table(data55, ref)
-sensitivity(data55, ref)
-specificity(data55, ref)
-
-#50
-table(data50, ref)
-sensitivity(data50, ref)
-specificity(data50, ref)
+#5
+table(lev5, ref)
+sensitivity(lev5, ref)
+specificity(lev5, ref)
