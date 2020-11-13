@@ -116,6 +116,8 @@ t.test(mh_posthoc$lev4, mh_posthoc$lev5, paired = F, p.adjust.methods = "bonferr
 apply(mh_posthoc[, c(4:9)], 2, mean)
 apply(mh_posthoc[, c(4:9)], 2, sd)
 
+sd(mh_posthoc$Manual_Scored)
+
 ##Now the Maxwell Buchanan dataset
 tap1 = tapply(nomiss_mb$Score,
               nomiss_mb$Score_Type, sd)
@@ -163,6 +165,11 @@ t.test(mb_posthoc$scored4, mb_posthoc$scored5, paired = F, p.adjust.methods = "b
 ##Now means and sds for effect size (cohens d)
 apply(mb_posthoc[, c(4:9)], 2, mean)
 apply(mb_posthoc[, c(4:9)], 2, sd)
+
+sd(mb_posthoc$manually_coded)
+
+#95%CI
+(apply(mb_posthoc[, c(4:9)], 2, sd) /sqrt(length(unique(long.mb$Sub.ID)))) * 1.96
 
 ####And now do kappas####
 library(psych)
