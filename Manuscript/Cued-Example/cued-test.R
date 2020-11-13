@@ -22,3 +22,4 @@ scored_cued = prop_correct_cued(dat,
 #View the output
 View(scored_cued$DF_Scored) #Trial level
 View(scored_cued$DF_Participant) #Participant proportion correct
+
