@@ -24,20 +24,24 @@ m_b$Sub.ID = as.character(m_b$Sub.ID)
 
 ##Melt the things
 #Maxwell and Huff data
-long.mh = melt(m_h)
+long.mh = melt(m_h[, -7])
 
 colnames(long.mh)[6] = "Score_Type"
 colnames(long.mh)[7] = "Score"
 
 #Maxwell & Buchanan data
-long.mb = melt(m_b)
+long.mb = melt(m_b[ , -7])
 
 colnames(long.mb)[6] = "Score_Type"
 colnames(long.mb)[7] = "Score"
 
 ##remove missing
-nomiss_mh = na.omit(long.mh).
+nomiss_mh = na.omit(long.mh)
 nomiss_mb = na.omit(long.mb) 
+
+table(nomiss_mh$Score)
+
+nomiss_mh$Score = nomiss_mh$Score * 100
 
 ##Anova
 #Maxwell Huff
@@ -52,6 +56,10 @@ model1
 model1$ANOVA$MSE = model1$ANOVA$SSd/model1$ANOVA$DFd
 model1$ANOVA$MSE
 
+table(nomiss_mb$Score)
+
+nomiss_mb$Score = nomiss_mb$Score * 100
+
 ##Maxwell Buchanan
 model2 = ezANOVA(nomiss_mb,
                  wid = Sub.ID,
@@ -60,6 +68,8 @@ model2 = ezANOVA(nomiss_mb,
                  type = 3,
                  detailed = T)
 model2
+
+unique(nomiss_mb$Score_Type)
 
 model2$ANOVA$MSE = model2$ANOVA$SSd/model2$ANOVA$DFd
 model2$ANOVA$MSE
