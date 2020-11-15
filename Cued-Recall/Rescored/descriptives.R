@@ -140,12 +140,12 @@ mb_posthoc = cast(long.mb, Sub.ID ~ Score_Type, mean, na.rm = T)
 
 ##Now do the t-test comparisons
 #Manual
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored0, paired = F, p.adjust.methods = "bonferroni")
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored1, paired = F, p.adjust.methods = "bonferroni")
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored2, paired = F, p.adjust.methods = "bonferroni")
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored3, paired = F, p.adjust.methods = "bonferroni")
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored4, paired = F, p.adjust.methods = "bonferroni")
-t.test(mb_posthoc$manually_coded, mb_posthoc$scored5, paired = F, p.adjust.methods = "bonferroni")
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored0, paired = F, p.adjust.methods = "bonferroni") #ns
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored1, paired = F, p.adjust.methods = "bonferroni") #ns
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored2, paired = F, p.adjust.methods = "bonferroni") #ns
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored3, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored4, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(mb_posthoc$manually_coded, mb_posthoc$scored5, paired = F, p.adjust.methods = "bonferroni") #sig
 
 #0
 t.test(mb_posthoc$scored0, mb_posthoc$scored1, paired = F, p.adjust.methods = "bonferroni")
