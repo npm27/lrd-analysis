@@ -1,5 +1,5 @@
 ####Check Human coded and set up for sensitivity/specificity####
-dat = read.csv("Human Coded Arranged.csv")
+dat = read.csv("1 Raw Datasets/Human Coded Arranged.csv")
 
 tapply(dat$Score, dat$list_type, mean) ##These means line up correctly
 
