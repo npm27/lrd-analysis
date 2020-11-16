@@ -1,5 +1,5 @@
 ####Score the Huff et al. (2018) data####
-library(RecordLinkage)
+#library(RecordLinkage)
 
 ##load in cleaned data
 dat = read.csv("2 Processed Datasets/Huff et al cleaned.csv")
