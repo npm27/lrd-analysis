@@ -1,7 +1,6 @@
-dat = read.csv("Unrel_Final.csv")
+dat = read.csv("Unrel_final.csv")
 
 library(caret)
-
 
 ref = factor(dat$Human)
 
@@ -10,6 +9,7 @@ lev1 = factor(dat$Lev1)
 lev2 = factor(dat$Lev2)
 lev3 = factor(dat$Lev3)
 lev4 = factor(dat$Lev4)
+lev5 = factor(dat$Lev5)
 
 #0
 table(lev0, ref)
@@ -35,3 +35,9 @@ specificity(lev3, ref)
 table(lev4, ref)
 sensitivity(lev4, ref)
 specificity(lev4, ref)
+
+#5
+table(lev5, ref)
+sensitivity(lev5, ref)
+specificity(lev5, ref)
+
