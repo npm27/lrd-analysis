@@ -66,7 +66,7 @@ ver.F = data.frame(lapply(ver.F, function(v) {
 }))
 
 ####Let's start with  0
-dat = read.csv("Unrel/Unrel0.csv")
+dat = read.csv("Unrel/Unrel5.csv")
 
 ##Get Version A
 A = subset(dat,
@@ -790,5 +790,5 @@ final = rbind(output_A2, output_A6, output_B2, output_B3,
 final = final[order(final$ids),]
 
 ##Write to file
-#write.csv(final, file = "unrel_4 formatted.csv", row.names = F)
+#write.csv(final, file = "Unrel/Processed/unrel_5 formatted.csv", row.names = F)
 mean(final$scores)

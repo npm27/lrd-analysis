@@ -273,7 +273,7 @@ scoredF5 = prop_correct_free(F5, responses = "response", key = ver.F$Cat_Recall_
 scoredF6 = prop_correct_free(F6, responses = "response", key = ver.F$Unrel_Recall_L6, id = "Sub.ID", cutoff = 5)
 
 ####Okay, now to combine scored output####
-Unrel = rbind(scoredA3$DF_Scored$Scored, scoredA4$DF_Scored, scoredB1$DF_Scored, scoredB6$DF_Scored, scoredC3$DF_Scored, scoredC4$DF_Scored,
+Unrel = rbind(scoredA3$DF_Scored, scoredA4$DF_Scored, scoredB1$DF_Scored, scoredB6$DF_Scored, scoredC3$DF_Scored, scoredC4$DF_Scored,
               scoredD1$DF_Scored, scoredD6$DF_Scored, scoredE3$DF_Scored, scoredE4$DF_Scored, scoredF1$DF_Scored, scoredF6$DF_Scored)
 
 Ad_hoc = rbind(scoredA2$DF_Scored, scoredA6$DF_Scored, scoredB2$DF_Scored, scoredB3$DF_Scored, scoredC2$DF_Scored, scoredC6$DF_Scored,
@@ -283,6 +283,6 @@ Cat = rbind(scoredA1$DF_Scored, scoredA5$DF_Scored, scoredB4$DF_Scored, scoredB5
             scoredD4$DF_Scored, scoredD5$DF_Scored, scoredE1$DF_Scored, scoredE5$DF_Scored, scoredF4$DF_Scored, scoredF5$DF_Scored)
 
 ####Write trial level data to .csv####
-write.csv(Cat, file = "4 Scored Datasets/Cat/CAT5.csv", row.names = F)
-write.csv(Ad_hoc, file = "4 Scored Datasets/Adhoc/ADHOC5.csv", row.names = F)
-write.csv(Unrel, file = "4 Scored Datasets/Unrel/UNREL5.csv", row.names = F)
+#write.csv(Cat, file = "4 Scored Datasets/Cat/CAT5.csv", row.names = F)
+#write.csv(Ad_hoc, file = "4 Scored Datasets/Adhoc/ADHOC5.csv", row.names = F)
+#write.csv(Unrel, file = "4 Scored Datasets/Unrel/UNREL5.csv", row.names = F)
