@@ -57,12 +57,12 @@ model1 = ezANOVA(adhoc2,
         detailed = T,
         type = 3)
 
-model1$ANOVA$MSE = model2$ANOVA$SSd/model2$ANOVA$DFd
+model1$ANOVA$MSE = model1$ANOVA$SSd/model1$ANOVA$DFd
 
 model1
 
 ##categorical
-model1 = ezANOVA(cat2,
+model2 = ezANOVA(cat2,
                  wid = Username,
                  between = Score_Type,
                  dv = Score,
@@ -81,9 +81,22 @@ model3 = ezANOVA(unrel2,
                  detailed = T,
                  type = 3)
 
-model3$ANOVA$MSE = model2$ANOVA$SSd/model2$ANOVA$DFd
+model3$ANOVA$MSE = model3$ANOVA$SSd/model3$ANOVA$DFd
 
 model3
+
+####Make table 12####
+##Start w/ adhoc
+apply(adhoc.wide[ , 2:length(adhoc.wide)], 2, mean)
+apply(adhoc.wide[ , 2:length(adhoc.wide)], 2, sd)
+
+##Now do categorical
+apply(cat.wide[ , 2:length(cat.wide)], 2, mean)
+apply(cat.wide[ , 2:length(cat.wide)], 2, sd)
+
+##And finally the unrelated list
+apply(unrel.wide[ , 2:length(unrel.wide)], 2, mean)
+apply(unrel.wide[ , 2:length(unrel.wide)], 2, sd)
 
 ####Kappas####
 cohen.kappa(unrel[ , c(6:12)]) #Unrelated
