@@ -1,0 +1,404 @@
+####Analysis!####
+library(psych)
+library(ez)
+
+options(scipen = 999)
+
+####Okay, first going to look at the trial level proportion correct####
+##These analyses are looking at whether the words in the sentences were correctly recalled
+
+dat = read.csv("scored_combined.csv")
+
+dat2 = dat[ , -c(18:23)]
+
+long.dat = melt(dat2,
+                measure.vars = c("Prop1", "Prop2", "lrd_0", "lrd_1", "lrd_2", "lrd_3", "lrd_4", "lrd_5"))
+
+colnames(long.dat)[10:11] = c("Rater", "Score")
+
+#run an ANOVA
+model = ezANOVA(long.dat,
+                within = Rater,
+                dv = Score,
+                wid = Participant.Private.ID,
+                type = 3,
+                detailed = T)
+model
+
+#Effect should be driven by differences between the upper and lower
+
+#Get mean recall rates
+apply(dat2[ , c(10:17)], 2, mean) #Yep, that seems to be the case
+
+#t.test time
+post_hoc = cast(long.dat, Participant.Private.ID ~ Rater, mean)
+
+#Rater 1 vs lrd data
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+##rater 2
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Prop2, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+##All the lrd's vs each other
+#0
+temp1 = t.test(post_hoc$lrd_0, post_hoc$lrd_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$lrd_0, post_hoc$lrd_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_0, post_hoc$lrd_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_0, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_0, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#1
+temp1 = t.test(post_hoc$lrd_1, post_hoc$lrd_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #marginal
+
+temp1 = t.test(post_hoc$lrd_1, post_hoc$lrd_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_1, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_1, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#2
+temp1 = t.test(post_hoc$lrd_2, post_hoc$lrd_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #marginal
+
+temp1 = t.test(post_hoc$lrd_2, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_2, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#3
+temp1 = t.test(post_hoc$lrd_3, post_hoc$lrd_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$lrd_3, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #marg
+
+#4
+temp1 = t.test(post_hoc$lrd_4, post_hoc$lrd_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#get cohen's kappa
+cohen.kappa(dat[ , c(10:17)])
+
+####Now let's do whether a sentence was scored correctly####
+dat3 = dat[ , -c(10:17)]
+
+long.dat2 = melt(dat3,
+                measure.vars = c("Corr1", "Corr2", "lrd_cor_0", "lrd_cor_1",
+                                 "lrd_cor_2", "lrd_cor_3", "lrd_cor_4", "lrd_cor_5"))
+
+colnames(long.dat2)[8:9] = c("Rater", "Score")
+
+#run an ANOVA
+model2 = ezANOVA(long.dat2,
+                within = Rater,
+                dv = Score,
+                wid = Participant.Private.ID,
+                type = 3,
+                detailed = T)
+model2
+
+
+apply(dat3[ , c(7, 9:15)], 2, mean)
+
+##post_hocs
+post_hoc = cast(long.dat2, Participant.Private.ID ~ Rater, mean)
+
+##Rater 1 vs lrd data
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+##rater 2
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$Corr2, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+##All the lrd's vs each other
+#0
+temp1 = t.test(post_hoc$lrd_cor_0, post_hoc$lrd_cor_1, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #marginal
+
+temp1 = t.test(post_hoc$lrd_cor_0, post_hoc$lrd_cor_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_0, post_hoc$lrd_cor_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_0, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_0, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#1
+temp1 = t.test(post_hoc$lrd_cor_1, post_hoc$lrd_cor_2, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+temp1 = t.test(post_hoc$lrd_cor_1, post_hoc$lrd_cor_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_1, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_1, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#2
+temp1 = t.test(post_hoc$lrd_cor_2, post_hoc$lrd_cor_3, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_2, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+temp1 = t.test(post_hoc$lrd_cor_2, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#3
+temp1 = t.test(post_hoc$lrd_cor_3, post_hoc$lrd_cor_4, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #marginal
+
+temp1 = t.test(post_hoc$lrd_cor_3, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #sig
+
+#4
+temp1 = t.test(post_hoc$lrd_cor_4, post_hoc$lrd_cor_5, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+p1 = round(temp1$p.value, 3)
+t1 = temp1$statistic
+SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
+temp1 #non-sig
+
+##Cohen's kappa
+cohen.kappa(dat3[ , c(7, 9:15)])
