@@ -206,7 +206,7 @@ temp1 #sig
 #get cohen's kappa
 cohen.kappa(dat[ , c(10:17)])
 
-####Now let's do whether a sentence was scored correctly####
+####Now let's do whether a sentence was scored as correct####
 dat3 = dat[ , -c(10:17)]
 
 long.dat2 = melt(dat3,
@@ -224,8 +224,15 @@ model2 = ezANOVA(long.dat2,
                 detailed = T)
 model2
 
+#Get means for table 14
+apply(dat3[ , c(7, 9:15)] * 100, 2, mean)
 
-apply(dat3[ , c(7, 9:15)], 2, mean)
+#Get sds
+apply(post_hoc[ , -1] * 100, 2, sd)
+
+#CIs
+
+(apply(post_hoc[ , -1] * 100, 2, sd) / sqrt(length(unique(post_hoc$Participant.Private.ID)))) * 1.96
 
 ##post_hocs
 post_hoc = cast(long.dat2, Participant.Private.ID ~ Rater, mean)
