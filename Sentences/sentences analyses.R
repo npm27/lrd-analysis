@@ -222,6 +222,9 @@ long.dat3 = subset(long.dat2,
 long.dat4 = subset(long.dat2,
                    long.dat2$Rater != "Corr1")
 
+long.dat3$Score = long.dat3$Score * 100
+long.dat4$Score = long.dat4$Score * 100
+
 #run an ANOVA
 #Rater 1 vs lrd
 model2 = ezANOVA(long.dat3,
