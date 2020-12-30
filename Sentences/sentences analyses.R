@@ -9,6 +9,8 @@ options(scipen = 999)
 
 dat = read.csv("scored_combined.csv")
 
+length(unique(dat$Participant.Private.ID))
+
 dat2 = dat[ , -c(18:23)]
 
 long.dat = melt(dat2,
@@ -215,14 +217,35 @@ long.dat2 = melt(dat3,
 
 colnames(long.dat2)[8:9] = c("Rater", "Score")
 
+long.dat3 = subset(long.dat2,
+                   long.dat2$Rater != "Corr2")
+long.dat4 = subset(long.dat2,
+                   long.dat2$Rater != "Corr1")
+
 #run an ANOVA
-model2 = ezANOVA(long.dat2,
+#Rater 1 vs lrd
+model2 = ezANOVA(long.dat3,
                 within = Rater,
                 dv = Score,
                 wid = Participant.Private.ID,
                 type = 3,
                 detailed = T)
 model2
+
+model2$ANOVA$MSE = model2$ANOVA$SSd/model2$ANOVA$DFd
+model2$ANOVA$MSE
+
+#rater 2 vs lrd
+model3 = ezANOVA(long.dat4,
+                 within = Rater,
+                 dv = Score,
+                 wid = Participant.Private.ID,
+                 type = 3,
+                 detailed = T)
+model3
+
+model3$ANOVA$MSE = model3$ANOVA$SSd/model3$ANOVA$DFd
+model3$ANOVA$MSE
 
 #Get means for table 14
 apply(dat3[ , c(7, 9:15)] * 100, 2, mean)
