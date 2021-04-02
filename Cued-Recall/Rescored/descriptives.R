@@ -100,7 +100,7 @@ t.test(mh_posthoc$Manual_Scored, mh_posthoc$lev5, paired = F, p.adjust.methods =
 #0
 t.test(mh_posthoc$lev0, mh_posthoc$lev1, paired = F, p.adjust.methods = "bonferroni")
 t.test(mh_posthoc$lev0, mh_posthoc$lev2, paired = F, p.adjust.methods = "bonferroni")
-t.test(mh_posthoc$lev0, mh_posthoc$lev3, paired = F, p.adjust.methods = "bonferroni")
+t.test(mh_posthoc$lev0, mh_posthoc$lev3, paired = F, p.adjust.methods = "bonferroni") ##Would change p = .04
 t.test(mh_posthoc$lev0, mh_posthoc$lev4, paired = F, p.adjust.methods = "bonferroni")
 t.test(mh_posthoc$lev0, mh_posthoc$lev5, paired = F, p.adjust.methods = "bonferroni")
 
