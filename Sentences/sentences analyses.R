@@ -36,7 +36,7 @@ apply(dat2[ , c(10:17)], 2, mean) #Yep, that seems to be the case
 post_hoc = cast(long.dat, Participant.Private.ID ~ Rater, mean)
 
 #Rater 1 vs lrd data
-temp1 = t.test(post_hoc$Corr1, post_hoc$lrd_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
+temp1 = t.test(post_hoc$Prop1, post_hoc$lrd_0, paired = F, p.adjust.methods = "Bonferroni", var.equal = T)
 p1 = round(temp1$p.value, 3)
 t1 = temp1$statistic
 SEM1 = (temp1$conf.int[2] - temp1$conf.int[1]) / 3.92
