@@ -1,5 +1,6 @@
 ####Score the Huff et al. (2018) data####
-#library(RecordLinkage)
+##This script scores the Huff et al. data using the single list free recall functions
+##For an example of how to score this dataset with the multi-list functions, use the script "Multi-list scoring.R"
 
 ##load in cleaned data
 dat = read.csv("2 Processed Datasets/Huff et al cleaned.csv")
@@ -9,12 +10,12 @@ library(readxl)
 library(lrd)
 
 ##Read in answer keys
-ver.A = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version A")
-ver.B = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version B")
-ver.C = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version C")
-ver.D = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version D")
-ver.E = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version E")
-ver.F = read_excel("1 Raw Datasets/Huff et al Key.xlsx", sheet = "Version F")
+ver.A = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version A")
+ver.B = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version B")
+ver.C = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version C")
+ver.D = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version D")
+ver.E = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version E")
+ver.F = read_excel("4 Scored Datasets/Huff et al Key.xlsx", sheet = "Version F")
 
 ##Remove spaces from answer key
 ver.A = apply(ver.A, 2, function(x)gsub(' ', '', x))
@@ -281,6 +282,18 @@ Ad_hoc = rbind(scoredA2$DF_Scored, scoredA6$DF_Scored, scoredB2$DF_Scored, score
 
 Cat = rbind(scoredA1$DF_Scored, scoredA5$DF_Scored, scoredB4$DF_Scored, scoredB5$DF_Scored, scoredC1$DF_Scored, scoredC5$DF_Scored,
             scoredD4$DF_Scored, scoredD5$DF_Scored, scoredE1$DF_Scored, scoredE5$DF_Scored, scoredF4$DF_Scored, scoredF5$DF_Scored)
+
+##and get the subject level
+Unrel_sub = rbind(scoredA3$DF_Participant, scoredA4$DF_Participant, scoredB1$DF_Participant, scoredB6$DF_Participant, scoredC3$DF_Participant, scoredC4$DF_Participant,
+              scoredD1$DF_Participant, scoredD6$DF_Participant, scoredE3$DF_Participant, scoredE4$DF_Participant, scoredF1$DF_Participant, scoredF6$DF_Participant)
+
+Ad_hoc_sub = rbind(scoredA2$DF_Participant, scoredA6$DF_Participant, scoredB2$DF_Participant, scoredB3$DF_Participant, scoredC2$DF_Participant, scoredC6$DF_Participant,
+               scoredD2$DF_Participant, scoredD3$DF_Participant, scoredE2$DF_Participant, scoredE6$DF_Participant, scoredF2$DF_Participant, scoredF3$DF_Participant)
+
+Cat_sub = rbind(scoredA1$DF_Participant, scoredA5$DF_Participant, scoredB4$DF_Participant, scoredB5$DF_Participant, scoredC1$DF_Participant, scoredC5$DF_Participant,
+            scoredD4$DF_Participant, scoredD5$DF_Participant, scoredE1$DF_Participant, scoredE5$DF_Participant, scoredF4$DF_Participant, scoredF5$DF_Participant)
+
+mean(Ad_hoc_sub$Proportion.Correct)
 
 ####Write trial level data to .csv####
 #write.csv(Cat, file = "4 Scored Datasets/Cat/CAT5.csv", row.names = F)

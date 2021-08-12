@@ -66,7 +66,7 @@ ver.F = data.frame(lapply(ver.F, function(v) {
 }))
 
 ####Let's start with Adhoc 0
-dat = read.csv("Adhoc/Adhoc4.csv")
+dat = read.csv("Adhoc/Adhoc3.csv")
 
 ##Get Version A
 A = subset(dat,
@@ -90,38 +90,38 @@ x = str_contains("windmill", l1.key)
 length(table(x)) == 1
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -146,38 +146,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -205,38 +205,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -260,38 +260,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -320,38 +320,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -376,38 +376,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -439,38 +439,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -494,38 +494,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -553,38 +553,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -609,38 +609,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -656,7 +656,7 @@ f = subset(dat,
 l1 = subset(f,
             f$List_Type == "AdHoc_Recall_L2")
 
-length(unique(l1$Sub.ID)) 
+length(unique(l1$Sub.ID))
 
 l2 = na.omit(l1)
 
@@ -667,38 +667,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -722,38 +722,38 @@ items = c()
 scores = c()
 
 for (p in unique(l2$Sub.ID)){
-  
+
   temp = subset(l2,
                 l2$Sub.ID == p)
-  
+
   for (i in l1.key){
-    
+
     x = str_contains(i, temp$Response)
-    
+
     print(i)
-    
+
     print(table(x))
-    
+
     if (length(table(x)) == 1){
-      
+
       val = FALSE
-      
+
       scores = c(scores, val)
-      
+
     } else {
-      
+
       val = TRUE
-      
+
       scores = c(scores, val)
-      
+
     }
-    
+
     items = c(items, i)
-    
+
     ids = c(ids, p)
-    
+
   }
-  
+
 }
 
 testoutput = data.frame(ids, items, scores)
@@ -782,5 +782,5 @@ final = final[order(final$ids),]
 final$scores = as.numeric(final$scores)
 
 ##Write to file
-#write.csv(final, file = "Adhoc/Processed/adhoc_5 formatted.csv", row.names = F)
-#mean(final$scores)
+#write.csv(final, file = "Adhoc/Processed/adhoc_0 formatted.csv", row.names = F)
+mean(final$scores)
