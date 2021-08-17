@@ -90,3 +90,26 @@ model3 = ezANOVA(unrel2,
 model3$ANOVA$MSE = model3$ANOVA$SSd/model3$ANOVA$DFd
 
 model3
+
+######Post-hocs####
+
+####Make the big table####
+####Make table 12####
+##Start w/ adhoc
+apply(adhoc.wide[ , 2:length(adhoc.wide)], 2, mean) * 100
+apply(adhoc.wide[ , 2:length(adhoc.wide)], 2, sd) * 100
+
+##Now do categorical
+apply(cat.wide[ , 2:length(cat.wide)], 2, mean) * 100
+apply(cat.wide[ , 2:length(cat.wide)], 2, sd) * 100
+
+##And finally the unrelated list
+apply(unrel.wide[ , 2:length(unrel.wide)], 2, mean) * 100
+apply(unrel.wide[ , 2:length(unrel.wide)], 2, sd) * 100
+
+####Kappas####
+cohen.kappa(unrel[ , c(3, 7:12)]) #Unrelated
+
+cohen.kappa(adhoc[ , c(3, 7:12)]) #Adhoc
+
+cohen.kappa(cat[ , c(3, 7:12)]) #categorical
