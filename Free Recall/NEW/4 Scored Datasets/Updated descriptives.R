@@ -92,6 +92,39 @@ model3$ANOVA$MSE = model3$ANOVA$SSd/model3$ANOVA$DFd
 model3
 
 ######Post-hocs####
+##only running these for categorical since that was the only one that returned a significant effect
+##Human coded
+t.test(cat.wide$Human, cat.wide$LEV0, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(cat.wide$Human, cat.wide$LEV1, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$Human, cat.wide$LEV2, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$Human, cat.wide$LEV3, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$Human, cat.wide$LEV4, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$Human, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #non-sig
+
+#LEV0
+t.test(cat.wide$LEV0, cat.wide$LEV1, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$LEV0, cat.wide$LEV2, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$LEV0, cat.wide$LEV3, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(cat.wide$LEV0, cat.wide$LEV4, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(cat.wide$LEV0, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #sig
+
+#LEV1
+t.test(cat.wide$LEV1, cat.wide$LEV2, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$LEV1, cat.wide$LEV3, paired = F, p.adjust.methods = "bonferroni") #marginal
+t.test(cat.wide$LEV1, cat.wide$LEV4, paired = F, p.adjust.methods = "bonferroni") #sig
+t.test(cat.wide$LEV1, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #sig
+
+#LEV2
+t.test(cat.wide$LEV2, cat.wide$LEV3, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$LEV2, cat.wide$LEV4, paired = F, p.adjust.methods = "bonferroni") #marginal
+t.test(cat.wide$LEV2, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #marginal
+
+#LEV3
+t.test(cat.wide$LEV3, cat.wide$LEV4, paired = F, p.adjust.methods = "bonferroni") #non-sig
+t.test(cat.wide$LEV3, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #non-sig
+
+#LEV4
+t.test(cat.wide$LEV4, cat.wide$LEV5, paired = F, p.adjust.methods = "bonferroni") #non-sig
 
 ####Make the big table####
 ####Make table 12####
